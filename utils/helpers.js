@@ -2,7 +2,7 @@
 import React from 'react'
 import {View,StyleSheet} from 'react-native'
 import {FontAwesome,Feather,MaterialIcons,MaterialCommunityIcons} from '@expo/vector-icons'
-import {white,orange,blue,purple,lightPurp,gray,red} from './colors.js'
+import {white,orange,blue,purple,lightPurp,gray,red,pink} from './colors.js'
 
 export function getMetricMetaInfo (metric) {
   const styles = StyleSheet.create({
