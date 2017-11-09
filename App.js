@@ -6,7 +6,7 @@ export default class App extends React.Component {
   render() {
     console.log("test")
     return (
-      <View style={styles.container}>
+      <View>
         <Text>Sharkit!</Text>
         <AddEntry />
       </View>
