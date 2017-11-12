@@ -72,7 +72,7 @@ export default class addEntry extends Component {
 				{
 					Object.keys(metaInfo).map((key) => {
 						const {type,getIcon,...rest} = metaInfo[key]
-						const value = this.state[metaInfo[key]]
+						const value = this.state[key]
 					return (
 						<View key={key}>
 						{getIcon()}
