@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, TouchableOpacity, Text} from 'react-native'
+import {View, ScrollView, TouchableOpacity, Text} from 'react-native'
 import {getMetricMetaInfo, timeToString} from '../utils/helpers'
 import {Ionicons} from '@expo/vector-icons'
 import UdaciSlider from './UdaciSlider'
@@ -7,6 +7,9 @@ import UdaciSteppers from './UdaciSteppers'
 import TextButton from './TextButton'
 import DateHeader from './DateHeader'
 import { submitEntry,removeEntry } from '../utils/api'
+import {connect} from 'react-redux'
+import {addEntry} from '../actions'
+
 
 function SubmitBtn ({onPress}) {
 	return (
@@ -16,7 +19,7 @@ function SubmitBtn ({onPress}) {
 	)
 }
 
-export default class addEntry extends Component {
+class AddEntry extends Component {
 	state = {
 		run:0,
 		bike:0,
@@ -47,7 +50,9 @@ export default class addEntry extends Component {
 	reset = () => {
 		const key = timeToString() 
 		//Update Redux
-
+		this.props.dispatch(addEntry({
+			[key]:null
+		}))
 		//Navigate to Home
 
 		//Save to DB
@@ -76,7 +81,9 @@ export default class addEntry extends Component {
 			eat:0
 		}))
 		//Update Redux
-
+		this.props.dispatch(addEntry({
+			[key]:entry
+		}))
 		//Navigate to Home
 
 		//Save to DB
@@ -99,7 +106,7 @@ export default class addEntry extends Component {
 		}
 		else {
 			return (
-				<View>
+				<ScrollView>
 					<DateHeader date={(new Date()).toLocaleDateString()}/>
 					{
 						Object.keys(metaInfo).map((key) => {
@@ -127,8 +134,18 @@ export default class addEntry extends Component {
 					})}
 
 						<SubmitBtn onPress={this.submit}/>
-				</View>
+				</ScrollView>
 			)
 		}
 	}
 }
+
+function mapStateToProps(state){
+	const key = timeToString()
+
+	return {
+		alreadyLogged: state[key]
+	}
+}
+
+export default connect(mapStateToProps)(AddEntry)
