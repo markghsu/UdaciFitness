@@ -10,12 +10,12 @@ export default function UdaciSteppers ({max,unit,step,value,onIncrement,onDecrem
 				<Text>UdaciStepper</Text>
 				<TouchableOpacity onPress={onDecrement}>
 					<View>
-						<FontAwesome name='minus' color='black' size='30' />
+						<FontAwesome name='minus' color='black' size={30} />
 					</View>
 				</TouchableOpacity>
 				<TouchableOpacity onPress={onIncrement}>
 					<View>
-						<FontAwesome name='plus' color='black' size='30' />
+						<FontAwesome name='plus' color='black' size={30} />
 					</View>
 				</TouchableOpacity>
 			</View>
