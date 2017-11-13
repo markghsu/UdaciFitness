@@ -7,7 +7,6 @@ export default function UdaciSteppers ({max,unit,step,value,onIncrement,onDecrem
 	return (
 		<View>
 			<View>
-				<Text>UdaciStepper</Text>
 				<TouchableOpacity onPress={onDecrement}>
 					<View>
 						<FontAwesome name='minus' color='black' size={30} />

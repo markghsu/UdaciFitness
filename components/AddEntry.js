@@ -6,6 +6,7 @@ import UdaciSlider from './UdaciSlider'
 import UdaciSteppers from './UdaciSteppers'
 import TextButton from './TextButton'
 import DateHeader from './DateHeader'
+import { submitEntry,removeEntry } from '../utils/api'
 
 function SubmitBtn ({onPress}) {
 	return (
@@ -14,7 +15,6 @@ function SubmitBtn ({onPress}) {
 		</TouchableOpacity>
 	)
 }
-
 
 export default class addEntry extends Component {
 	state = {
@@ -45,11 +45,13 @@ export default class addEntry extends Component {
 		})
 	}
 	reset = () => {
+		const key = timeToString() 
 		//Update Redux
 
 		//Navigate to Home
 
 		//Save to DB
+		submitEntry ({key})
 
 		this.setState(()=> ({
 			run:0,
@@ -78,6 +80,7 @@ export default class addEntry extends Component {
 		//Navigate to Home
 
 		//Save to DB
+		submitEntry ({entry, key})
 
 		//Clear local notification
 	}
