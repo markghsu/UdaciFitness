@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {View, ScrollView, TouchableOpacity, Text} from 'react-native'
-import {getMetricMetaInfo, timeToString} from '../utils/helpers'
+import {getMetricMetaInfo, timeToString, getReminder} from '../utils/helpers'
 import {Ionicons} from '@expo/vector-icons'
 import UdaciSlider from './UdaciSlider'
 import UdaciSteppers from './UdaciSteppers'
@@ -51,7 +51,7 @@ class AddEntry extends Component {
 		const key = timeToString() 
 		//Update Redux
 		this.props.dispatch(addEntry({
-			[key]:null
+			[key]:getReminder()
 		}))
 		//Navigate to Home
 
@@ -144,7 +144,7 @@ function mapStateToProps(state){
 	const key = timeToString()
 
 	return {
-		alreadyLogged: state[key]
+		alreadyLogged: state[key] && typeof state[key].today === 'undefined'
 	}
 }
 

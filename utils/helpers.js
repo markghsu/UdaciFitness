@@ -4,6 +4,11 @@ import {View,StyleSheet} from 'react-native'
 import {FontAwesome,Feather,MaterialIcons,MaterialCommunityIcons} from '@expo/vector-icons'
 import {white,orange,blue,purple,lightPurp,gray,red,pink} from './colors.js'
 
+export function getReminder(){
+  return {
+    today: '👋 Remember to enter your log for today!'
+  }
+}
 export function getMetricMetaInfo (metric) {
   const styles = StyleSheet.create({
   container: {
