@@ -11,13 +11,17 @@ export function getReminder(){
 }
 export function getMetricMetaInfo (metric) {
   const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    iconContainer: {
+      padding:5,
+      borderRadius:8,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height:50,
+      width:50,
+      marginRight:20
+    },
+  });
   const info = {
     run: {
       displayName: 'Run',

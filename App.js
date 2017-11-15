@@ -9,8 +9,8 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={createStore(reducer)}>
-        <View>
-          <AddEntry />
+        <View style={styles.container}>
+          <AddEntry style={styles.entry}/>
         </View>
       </Provider>
     );
@@ -21,7 +21,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+  },
+  entry: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
   },
 });
