@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
 		borderRadius:7,
 		height:45,
 		marginLeft:40,
-		marginRight:40
+		marginRight:40,
+		marginTop:15
 	},
 	androidSubmit:{
 		backgroundColor: purple,
