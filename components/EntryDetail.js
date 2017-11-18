@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {View,Text, StyleSheet} from 'react-native'
-import {purple} from '../utils/colors.js'
+import {purple,white, lightPurp} from '../utils/colors.js'
+import {connect} from 'react-redux'
+import MetricCard from './MetricCard'
 
 class EntryDetail extends Component {
 	static navigationOptions = ({navigation}) => {
@@ -14,14 +16,33 @@ class EntryDetail extends Component {
 		}
 	}
 	render(){
+		const {metrics} = this.props
 		return (
-			<View>
+			<View style={styles.container}>
 				<Text style={{color:purple,fontSize:22,margin:8}}>
-					Entry Detail View - {this.props.navigation.state.params.entryID}
+					Entry Detail View - {this.props.entryID}
 				</Text>
+				<MetricCard metrics={metrics} />
 			</View>
 		)
 	}
 }
 
-export default EntryDetail
+const styles = StyleSheet.create({
+	container: {
+		flex:1,
+		backgroundColor: white,
+		padding:15
+	}
+})
+
+function mapStateToProps(state,{navigation}){
+	const{entryID} = navigation.state.params
+
+	return{
+		entryID,
+		metrics: state[entryID]
+	}
+}
+
+export default connect(mapStateToProps)(EntryDetail)
