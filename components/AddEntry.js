@@ -10,6 +10,7 @@ import { submitEntry,removeEntry } from '../utils/api'
 import {connect} from 'react-redux'
 import {addEntry} from '../actions'
 import {white, purple, lightPurp} from '../utils/colors'
+import { NavigationActions } from 'react-navigation'
 
 
 function SubmitBtn ({onPress}) {
@@ -97,6 +98,11 @@ class AddEntry extends Component {
 			}
 		})
 	}
+	toHome = () => {
+		this.props.navigation.dispatch(NavigationActions.back({
+			key:'AddEntry'
+		}))
+	}
 	reset = () => {
 		const key = timeToString() 
 		//Update Redux
@@ -104,7 +110,7 @@ class AddEntry extends Component {
 			[key]:getReminder()
 		}))
 		//Navigate to Home
-
+		this.toHome()
 		//Save to DB
 		submitEntry ({key})
 
@@ -135,7 +141,7 @@ class AddEntry extends Component {
 			[key]:entry
 		}))
 		//Navigate to Home
-
+		this.toHome()
 		//Save to DB
 		submitEntry ({entry, key})
 
