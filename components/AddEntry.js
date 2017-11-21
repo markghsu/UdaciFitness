@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {View, ScrollView, TouchableOpacity, Text, StyleSheet, Platform} from 'react-native'
-import {getMetricMetaInfo, timeToString, getReminder} from '../utils/helpers'
+import {getMetricMetaInfo, timeToString, getReminder, clearLocalNotification,setLocalNotification} from '../utils/helpers'
 import {Ionicons} from '@expo/vector-icons'
 import UdaciSlider from './UdaciSlider'
 import UdaciSteppers from './UdaciSteppers'
@@ -146,6 +146,7 @@ class AddEntry extends Component {
 		submitEntry ({entry, key})
 
 		//Clear local notification
+		clearLocalNotification().then(setLocalNotification)
 	}
 	render(){
 		const metaInfo = getMetricMetaInfo()
